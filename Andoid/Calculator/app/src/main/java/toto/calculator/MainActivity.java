@@ -11,7 +11,7 @@ public class MainActivity extends AppCompatActivity {
     private Button btn1,btn2,btn3,btn4,btn5,btn6,btn7,btn8,btn9,btn0,btn13,btnDot,btn20,btn19,btn18,btn17,btnDEL;
     private TextView txtResult,txtDisplay;
     private String txtInput = "" ;
-    private boolean isEqual = false, isDot = false, isOperator = false, isCalculated = false;
+    private boolean isEqual = false, isCalculated = false;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,6 +22,10 @@ public class MainActivity extends AppCompatActivity {
         txtDisplay.setText(null);
         btn0.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
+                if(isEqual){
+                    txtDisplay.setText(null);
+                    txtInput = "";
+                }
                 txtDisplay.setText(txtDisplay.getText() + "0");
                 txtInput += "0";
                 calculation();
@@ -29,135 +33,186 @@ public class MainActivity extends AppCompatActivity {
         });
         btn1.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
-                isDot = false;
-                isOperator = false;
+                if(isEqual){
+                    txtDisplay.setText(null);
+                    txtInput = "";
+                }
                 txtDisplay.setText(txtDisplay.getText() + "1");
                 txtInput += "1";
                 calculation();
             }});
         btn2.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                isDot = false;
-                isOperator = false;
+                if(isEqual){
+                    txtDisplay.setText(null);
+                    txtInput = "";
+                }
                 txtDisplay.setText(txtDisplay.getText() + "2");
                 txtInput += "2";
                 calculation();
             }});
         btn3.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                isDot = false;
-                isOperator = false;
+                if(isEqual){
+                    txtDisplay.setText(null);
+                    txtInput = "";
+                }
                 txtDisplay.setText(txtDisplay.getText() + "3");
                 txtInput += "3";
                 calculation();}  });
         btn4.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                isDot = false;
-                isOperator = false;
+                if(isEqual){
+                    txtDisplay.setText(null);
+                    txtInput = "";
+                }
                 txtDisplay.setText(txtDisplay.getText() + "4");
                 txtInput += "4";
                 calculation();
             }});
         btn5.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                isDot = false;
-                isOperator = false;
+                if(isEqual){
+                    txtDisplay.setText(null);
+                    txtInput = "";
+                }
                 txtDisplay.setText(txtDisplay.getText() + "5");
                 txtInput += "5";
                 calculation();
             }});
         btn6.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                isDot = false;
-                isOperator = false;
+                if(isEqual){
+                    txtDisplay.setText(null);
+                    txtInput = "";
+                }
                 txtDisplay.setText(txtDisplay.getText() + "6");
                 txtInput += "6";
                 calculation();
             }});
         btn7.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                isDot = false;
-                isOperator = false;
+                if(isEqual){
+                    txtDisplay.setText(null);
+                    txtInput = "";
+                }
                 txtDisplay.setText(txtDisplay.getText() + "7");
                 txtInput += "7";
                 calculation();
             }});
         btn8.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                isDot = false;
-                isOperator = false;
+                if(isEqual){
+                    txtDisplay.setText(null);
+                    txtInput = "";
+                }
                 txtDisplay.setText(txtDisplay.getText() + "8");
                 txtInput += "8";
                 calculation();
             }});
         btn9.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                isDot = false;
-                isOperator = false;
+                if(isEqual){
+                    txtDisplay.setText(null);
+                    txtInput = "";
+                }
                 txtDisplay.setText(txtDisplay.getText() + "9");
                 txtInput += "9";
                 calculation();
             }});
         btnDot.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                if(!isDot) {
+                Log.i("setOnClickListener", "btn dot");
+                if(isEqual){
+                    txtInput = ".";
+                    txtDisplay.setText(".");
+                    isEqual= false;
+                }
+                else if(!isLastCharDot()) {
                     txtDisplay.setText(txtDisplay.getText() + ".");
                     txtInput += ".";
-                    isDot = true;
                 }
             }});
         btn17.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                if(!isOperator && (!txtInput.isEmpty())) {
-                    isOperator = true;
+                Log.i("setOnClickListener", "btn /");
+                if(!isLastCharOperator() && (!txtInput.isEmpty())) {
                     isCalculated = true;
-                    calculation();
-                    txtDisplay.setText(txtDisplay.getText() + " : ");
+                    isEqual = false;
+                    txtDisplay.setText(txtDisplay.getText() + ":");
                     txtInput += "/";
                 }
-                Log.i("setOnClickListener", "btn :");
+                if(isLastCharOperator()){ // replace operator
+                    txtInput = removeLastChar(txtInput.toString());
+                    txtInput += "/";
+                    txtDisplay.setText(removeLastChar(txtDisplay.getText().toString()));
+                    txtDisplay.setText(txtDisplay.getText() + ":");
+                }
             }});
         btn18.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                if(!isOperator && (!txtInput.isEmpty())) {
-                    isOperator = true;
+                Log.i("setOnClickListener", "btn x");
+                if(!isLastCharOperator() && (!txtInput.isEmpty())) {
                     isCalculated = true;
-                    calculation();
-                    txtDisplay.setText(txtDisplay.getText() + " x ");
+                    isEqual = false;
+                    txtDisplay.setText(txtDisplay.getText() + "x");
                     txtInput += "*";
                 }
-                Log.i("setOnClickListener", "btn x");
+                if(isLastCharOperator()){ // replace operator
+                    txtInput = removeLastChar(txtInput.toString());
+                    txtInput += "*";
+                    txtDisplay.setText(removeLastChar(txtDisplay.getText().toString()));
+                    txtDisplay.setText(txtDisplay.getText() + "x");
+                }
             }});
         btn19.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                if(!isOperator && (!txtInput.isEmpty())) {
-                    isOperator = true;
+                Log.i("setOnClickListener", "btn Sub");
+                if(!isLastCharOperator() && (!txtInput.isEmpty())) {
                     isCalculated = true;
-                    calculation();
-                    txtDisplay.setText(txtDisplay.getText() + " - ");
+                    isEqual = false;
+                    txtDisplay.setText(txtDisplay.getText() + "-");
                     txtInput += "-";
+                }
+                if(isLastCharOperator()){ // replace operator
+                    txtInput = removeLastChar(txtInput.toString());
+                    txtInput += "-";
+                    txtDisplay.setText(removeLastChar(txtDisplay.getText().toString()));
+                    txtDisplay.setText(txtDisplay.getText() + "-");
                 }
             }});
         btn20.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                if(!isOperator && (!txtInput.isEmpty())) {
+                Log.i("setOnClickListener", "btn ADD");
+                if(!isLastCharOperator() && (!txtInput.isEmpty())) {
                     isCalculated = true;
-                    isOperator = true;
-                    calculation();
-                    txtDisplay.setText(txtDisplay.getText() + " + ");
+                    isEqual = false;
+                    txtDisplay.setText(txtDisplay.getText() + "+");
                     txtInput += "+";
                 }
-                Log.i("setOnClickListener", "btn ADD");
+                if(isLastCharOperator()){ // replace operator
+                    txtInput = removeLastChar(txtInput.toString());
+                    txtInput += "+";
+                    txtDisplay.setText(removeLastChar(txtDisplay.getText().toString()));
+                    txtDisplay.setText(txtDisplay.getText() + "+");
+                }
             }});
         btnDEL.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                isOperator = false;
-                isDot = false;
-                isCalculated = false;
-                txtDisplay.setText(null);
-                txtResult.setText(null);
-                txtInput = "";
                 Log.i("setOnClickListener", "btn DEL");
+                if(isEqual){
+                    txtResult.setText(null);
+                    txtDisplay.setText(null);
+                    txtInput = "";
+                    isEqual = false;
+                    isCalculated = false;
+                    btnDEL.setText("DEL");
+                }
+                else{
+                    txtInput = removeLastChar(txtInput.toString());
+                    txtDisplay.setText(removeLastChar(txtDisplay.getText().toString()));
+                    calculation();
+                }
             }});
         btn13.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -165,21 +220,51 @@ public class MainActivity extends AppCompatActivity {
                     calculation();
                     txtDisplay.setText(txtResult.getText());
                     txtInput = txtResult.getText().toString();
-                    Log.i("setOnClickListener btn = ",txtInput.toString());
+                    btnDEL.setText("CLR");
+                    Log.i("Btn = ",txtInput.toString());
                     isEqual = true;
                 }
             }});
     }
     private void calculation(){
-        if(isCalculated){
+        if(isCalculated && !txtInput.isEmpty() && !isLastCharOperator()){
             try{
                 double result = eval(txtInput);
-                String stringResult = String.format((result % 1 == 0 ? "%.0f" : "%.1f"), result);
-                txtResult.setText(stringResult.toString());
+                if(result % 1 == 0){
+                    String stringResult = String.format("%.0f", result).toString();
+                    txtResult.setText(stringResult.toString());
+                }
+                else{
+                    txtResult.setText(Double.toString(result));
+                }
+                Log.i("Cal: ",txtInput.toString());
             }
             catch (Exception e){
                 Log.i("BACKTRACE_EVAL: ",txtInput.toString());
                 txtResult.setText("Invalid expression");}
+        }
+    }
+    protected String removeLastChar(String s) {
+        return (s == null || s.length() == 0) ? "": (s.substring(0, s.length() - 1));
+    }
+    protected boolean isLastCharOperator() {
+        if(txtInput == null || txtInput.length() == 0){
+            return false;
+        }
+        else{
+            btnDEL.setText("DEL");
+            String lastChar = Character.toString(txtInput.charAt(txtInput.length() - 1));
+            return((lastChar.equals("+") || lastChar.equals("-") ||
+                    lastChar.equals("*") || lastChar.equals("/")));
+        }
+    }
+    protected boolean isLastCharDot() {
+        if(txtInput == null || txtInput.length() == 0){
+            return false;
+        }
+        else{
+            String lastChar = Character.toString(txtInput.charAt(txtInput.length() - 1));
+            return(lastChar.equals("."));
         }
     }
     private double eval(final String str) {
