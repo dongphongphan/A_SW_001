@@ -1,0 +1,28 @@
+# Project: Project1
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = Observer.o
+LINKOBJ  = Observer.o
+LIBS     = -static-libgcc -m64
+INCS     = 
+CXXINCS  = -I"C:/proj/devC/test/stack"
+BIN      = pattern.exe
+CXXFLAGS = $(CXXINCS) -ansi -march=native -mtune=native -Og -m64 -w -Wall -Wextra -pedantic -std=c++17 -Wall
+CFLAGS   = $(INCS) -ansi -march=native -mtune=native -Og -m64 -w -Wall -Wextra -pedantic -std=c++17 -Wall
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+Observer.o: Observer.cpp
+	$(CPP) -c Observer.cpp -o Observer.o $(CXXFLAGS)
