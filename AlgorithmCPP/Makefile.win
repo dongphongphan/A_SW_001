@@ -4,8 +4,8 @@
 CPP      = g++.exe
 CC       = gcc.exe
 WINDRES  = windres.exe
-OBJ      = Observer.o
-LINKOBJ  = Observer.o
+OBJ      = algo.o
+LINKOBJ  = algo.o
 LIBS     = -static-libgcc -m64
 INCS     = 
 CXXINCS  = -I"C:/proj/devC/test/stack"
@@ -24,5 +24,5 @@ clean: clean-custom
 $(BIN): $(OBJ)
 	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
 
-Observer.o: Observer.cpp
-	$(CPP) -c Observer.cpp -o Observer.o $(CXXFLAGS)
+algo.o: algo.cpp
+	$(CPP) -c algo.cpp -o algo.o $(CXXFLAGS)
