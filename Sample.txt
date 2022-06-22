@@ -1,0 +1,175 @@
+What is UML ?
+UML, stand for Unified Modeling Language, is a standardized modeling language consisting of an integrated set of diagrams
+- that is intended to provide a standard way to visualize the design of a system
+- to help system and software developers for specifying, visualizing, constructing, and documenting the artifacts of software systems
+The UML is a very important part of developing object oriented software and the software development process. 
+The UML uses mostly graphical notations to express the design of software projects. Using the UML helps project teams communicate, 
+explore potential designs, and validate the architectural design of the software.
+
+Why UML ?
+- the industry looks for techniques to automate the production of software and to improve quality and reduce cost and time-to-market
+- Businesses also seek techniques to manage the complexity of systems as they increase in scope and scale
+-- Provide users with a ready-to-use, expressive visual modeling language so they can develop and exchange meaningful models
+-- Provide extensibility and specialization mechanisms to extend the core concepts.
+-- Be independent of particular programming languages and development processes
+-- Provide a formal basis for understanding the modeling language
+- Support higher-level development concepts such as collaborations, frameworks, patterns and components
+
+Structural UML diagrams: Class diagram / Package diagram /Object diagram / Component diagram / Composite structure diagram /Deployment diagram
+Behavioral UML diagrams: Activity diagram / Sequence diagram / Use case diagram / State diagram / Communication diagram / Interaction overview diagram / Timing diagram
+
+State diagram / State machine:
+describe the behaviour of systems. State diagrams require that the system described is composed of a a number of states.
+- State the system can be in
+- Acceptable transition between states
+- Condition/Event that trigger the transition
+- actions taken when entering/leaving state
+- start and end state.
+
+Flow chart:
+On the other hand, a flowchart, I would say, emphasizes procedure.  And, unlike a state machine diagram, there isn't a concept of state.
+This diagrammatic representation illustrates a solution model to a given problem.  
+A flowchart shows the steps and actions to achieve a goal
+
+Class diagram:
+describes the structure of a system by showing the system's classes, their attributes, operations (or methods), 
+and the relationships among objects
+It is used for general conceptual modelling of the systematic of the application, and for detailed modelling translating the models into
+programming code
+
+
+Virtual/ pure virtual method:
+Virtual give you dynamic polymorphism, that is, the ability to select at run-time the most-derived override of a method.
+Because of the keyword virtual, the selection of the method happens at run-time, not compile-time. What happens here at compile-time is 
+that the compiler sees that this is a Base*, and that it's calling a virtual method, so it insert a call to the vtable instead of 
+class Base. This vtable is instantiated at run-time, hence the run-time resolution to the most-derived override
+
+Abstraction:
+providing only essential information to the outside world and hiding their background details
+
+Encapsulation is an Object Oriented Programming concept that binds together the data and functions that manipulate the data, 
+and that keeps both safe from outside interference and misuse
+
+Encapsulation is the packing of data and functions operating on that data into a single component and restricting the access to some 
+of the object's components.
+Encapsulation means that the internal representation of an object is generally hidden from view outside of the object's definition.
+
+Abstraction is a mechanism which represent the essential features without including implementation details.
+
+Encapsulation:-- Information hiding.
+Abstraction:-- Implementation hiding
+
+===========================================================
+Inheritance:
+Inheritance is the process of forming a new class from an existing class called as base class,
+new class is formed called as derived class
+===================================================
+Polymorphism:
+The ability to use an operator or function in different ways in other words giving different meaning or functions to the 
+operators or functions
+Polymorphism is the process to define more than one body for functions/methods with same name
+Overloading IS a type of polymorphism, where the signature part must be different. 
+Overriding is another, that is used in case of inheritance where signature part is also same
+- Overloading(Compile-Time polymorphism): Methods with same name but different operation
+- Overriding(Run-Time polymorphism): Override a method in base class by creating similar method in derived class
+
+
+
+My name is Phong. i'm Embedded software engineer with 10 year experience in embedded SW and C/C++ programming.
+I graduated from HCM University of technology in 2012. my major was Mechatronics.
+- after graduating, I joined Robert Bosch VN as a Embedded software engineer.
+
+I was working in Engine Controll Unit project, which use Infineon controller and OSEK OS:
+- develop driver for Voltage regulator Peripheral. this driver is used to control the output voltage of sensor power supplies and MCU power supply. perform diagnosis for power supplies system by reading
+error status from peripherial through SPI and implemente error handling logic. Monitoring MCU via external watchdog.
+
+==> i learn about Autosar architecture and working closely with hard-ware tool such as Oscilloscope, logic port, Canalyser. 
+and also SW development process CMMI
+
+after 3 years working there, from 2012 to 2015, i move to Car Multimedia proj, that is within Bosch but I relocated to India and join Bosch Bangalore team:
+- I was working Navigation HMI application for in Vehicle Infotainment devices (HU / Touch screen). which is running Linux OS and IMx6 SOC
+- Implement Graphic user interface (screen, popup) by CGI tool and HMI framework. creating screen layout, display date into screen, define and
+handle user interation.
+- Design the state machine to Control Screen transition and Handle User input.
+- Develop data model in C++ to manage the HMI data and communicate with base Map data and Map engine.
+- Develop the Inter process Communication using Dbus.
+
+After more than 2 years, we successfully delivered the Head Unit to cusomter in midle of 2017.
+
+In 2017, I decided to quit Bosch and join Continental Automotive Singapore as seninor embedded SW engineer.
+At Conti, I was working on Telematics project, that's using QC Snap dragon SOC, running Linux OS, the product is used in Car to support eCall and connectivity over cellular network.
+- I was working on emergency call service that can trigger voice call to emmergency center in case of accident and driver need help.
+- I develop the remote services that support data communication bettween Car and Cloud server over HTTP protocol, SMS.
+- Implement OTA feature to support Firmware Update Over the Air.
+
+And last June 2021, i join Rockwell automation as Senior Firmware engineer and working on Micro800 project a Programable Logic Controller (PLC) that use in automation industry.
+
+we are using SMT32 microController that running threadX OS. 
+we develop application to support all type Communication via USB, Ethernet, Serial.
+
+That's all above my experience.
+
+About my family, I'm married, my wife is working in web development as full stack engineer. we have'n had kid yet.
+My wife recently start working on German based company and we just relocate to Berlin on 26 March.
+
+
+
+=> MVC architecture. Learn about GUI design, State machine, IPC: ASF (Dbus,CCA); multi thread courier message and Linux environment.
+=> version controll: Git and Clearcase 
+
+
+===============Stack and Heap==================================
+- stack memory is where local variables get stored/constructed. The stack is also used to hold parameters passed to functions
+In a stack, the allocation and deallocation is automatically done by whereas, in heap, it needs to be done by the programmer manually.
+Handling of Heap frame is costlier than handling of stack frame.
+Memory shortage problem is more likely to happen in stack whereas the main issue in heap memory is fragmentation.
+Stack frame access is easier than the heap frame as the stack have small region of memory and is cache friendly, but in case of heap frames which are dispersed throughout the memory so it cause more cache misses.
+Stack is not flexible, the memory size allotted cannot be changed whereas a heap is flexible, and the allotted memory can be altered.
+Accessing time of heap takes is more than a stack.
+
+=========Struct and Union:==============================================
+with union, you supposed to use only one of the elements, because they are stored at the same spot.this is useful when you want to store
+something that could be one of several type.
+Union allows storing different data types in the same memory location. u can define a union with many members but only one a value at 
+any given time
+A struct, on the other hand, has a separate memory location for each of its element and they all can be used at once.
+
+======Interupts:=========================================
+Interrupt is a signal to the processor emitted by hardware or SW indicating an event that need immediate attention.
+An interrupt alert the processor to a high priority condition requiring the interruption of current code the processor is executing.
+processor responds by suspending its current activities, saving its state, and executing the function called interrup handler (or ISR)
+this interruption is temporary, after the interrupt handler finishes, the processor resume normal activities.
+
+===========Threads safe:========================
+- A piece of code is "thread safe" if it functions correctly during simultaneous execution of multiple threads
+- it must satisfy the need for multiple threads to access the same shared data
+- And the need for a shared piece of data to be accessed by only one thread at any given time
+
+====Race condition:=============================
+- A race condition occurs when two or more threads can access shared data and they try to change it at the same time.
+Because the thread scheduling algorithm can swap between threads at any time,
+you don't know the order in which the threads will attempt to access the shared data.
+Therefore, the result of the change in data is dependent on the thread scheduling algorithm,
+i.e. both threads are "racing" to access/change the data.
+
+A "race condition" exists when multithreaded (or otherwise parallel) code that would access a shared resource could do
+so in such a way as to cause unexpected results
+- Retrive / modify / store.
+
+Move semantic - Rvalue reference
+
+POINTER VS REFERENCE C++:
+1. A pointer variable has it's own identity : memory address that can be taken with & operator (ampersand), and certain amout of space can be measured via sizeof
+   Reference is jsut an alias for an object. Using these operators on reference returns the value corresponding to whatever reference is bound to.
+2. A pointer can be re-assigned. (A pointer can be assigned to NULL, but reference must bound to existing object.)
+   A reference cannot be re-bound, and must be bounded during initialization.
+3. We can have pointer to pointer, but reference only has 1 level.
+4. A pointer can iterate over a array. using Increment (++) operator to go to net item.
+5. Pointer need to dereference using Asterisk (*) to access to memmory location it pointing to.
+6. Reference cannot be put in array.
+8. Const reference can bound to a contant number. [const int &a = (int)12]
+
+When Reference should be passed to function as argument ?
+1. [Modification] Expect input argument can be changed. Passing by value copies the data so if the target code modifies that copy, it will not affect the original
+2. [Performance] Passing a huge object as argument can impact performent because of copy operation
+3. In copy or move constructor which by definition must take reference in C++

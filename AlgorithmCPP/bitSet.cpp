@@ -37,7 +37,8 @@ void reverseBit(int data, unsigned char idx)
 	printf(BYTE_TO_BINARY_PATTERN,BYTE_TO_BINARY(data>>8));
 	printf(BYTE_TO_BINARY_PATTERN,BYTE_TO_BINARY(data));
 	
-	data ^= (1UL << idx);
+	data ^= (1<<idx);
+	//data ^= (1UL << idx);
 	
 	printf("\n");
 	printf(BYTE_TO_BINARY_PATTERN,BYTE_TO_BINARY(data>>24));
@@ -67,7 +68,7 @@ void clearBit(int data, unsigned char idx)
 	printf(BYTE_TO_BINARY_PATTERN,BYTE_TO_BINARY(data));
 	printf("\n");
 	
-	data &= ~(1 << idx);
+	data &= ~(1UL << idx);
 	
 	printf(BYTE_TO_BINARY_PATTERN,BYTE_TO_BINARY(data>>24));
 	printf(BYTE_TO_BINARY_PATTERN,BYTE_TO_BINARY(data>>16));
@@ -86,8 +87,7 @@ void foo()
 }
 int main(int argc, char** argv) {
 	
-	char a = 0x98;
-	printf(BYTE_TO_BINARY_PATTERN,BYTE_TO_BINARY(a));
-	printf("\n");
-	printf(BYTE_TO_BINARY_PATTERN,BYTE_TO_BINARY(-a));
+	unsigned int a = 0xFF11EEAA;
+	//reverseBit(a,31);
+	foo();
 }
