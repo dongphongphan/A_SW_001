@@ -81,7 +81,7 @@ I graduated from HCM University of technology in 2012. my major was Mechatronics
 
 I was working in Engine Controll Unit project, which use Infineon controller and OSEK OS:
 - develop driver for Voltage regulator Peripheral. this driver is used to control the output voltage of sensor power supplies and MCU power supply. perform diagnosis for power supplies system by reading
-error status from peripherial through SPI and implemente error handling logic. Monitoring MCU via external watchdog.
+error status from peripheral through SPI and implement error handling logic. Monitoring MCU via external watchdog.
 
 ==> i learn about Autosar architecture and working closely with hard-ware tool such as Oscilloscope, logic port, Canalyser. 
 and also SW development process CMMI
@@ -94,12 +94,12 @@ handle user interation.
 - Develop data model in C++ to manage the HMI data and communicate with base Map data and Map engine.
 - Develop the Inter process Communication using Dbus.
 
-After more than 2 years, we successfully delivered the Head Unit to cusomter in midle of 2017.
+After more than 2 years, we successfully delivered the Head Unit to customer in middle of 2017.
 
-In 2017, I decided to quit Bosch and join Continental Automotive Singapore as seninor embedded SW engineer.
+In 2017, I decided to quit Bosch and join Continental Automotive Singapore as senior embedded SW engineer.
 At Conti, I was working on Telematics project, that's using QC Snap dragon SOC, running Linux OS, the product is used in Car to support eCall and connectivity over cellular network.
-- I was working on emergency call service that can trigger voice call to emmergency center in case of accident and driver need help.
-- I develop the remote services that support data communication bettween Car and Cloud server over HTTP protocol, SMS.
+- I was working on emergency call service that can trigger voice call to emergency center in case of accident and driver need help.
+- I develop the remote services that support data communication between Car and Cloud server over HTTP protocol, SMS.
 - Implement OTA feature to support Firmware Update Over the Air.
 
 And last June 2021, i join Rockwell automation as Senior Firmware engineer and working on Micro800 project a Programable Logic Controller (PLC) that use in automation industry.
@@ -137,7 +137,7 @@ A struct, on the other hand, has a separate memory location for each of its elem
 ======Interupts:=========================================
 Interrupt is a signal to the processor emitted by hardware or SW indicating an event that need immediate attention.
 An interrupt alert the processor to a high priority condition requiring the interruption of current code the processor is executing.
-processor responds by suspending its current activities, saving its state, and executing the function called interrup handler (or ISR)
+processor responds by suspending its current activities, saving its state, and executing the function called interrupt handler (or ISR)
 this interruption is temporary, after the interrupt handler finishes, the processor resume normal activities.
 
 ===========Threads safe:========================
@@ -154,22 +154,24 @@ i.e. both threads are "racing" to access/change the data.
 
 A "race condition" exists when multithreaded (or otherwise parallel) code that would access a shared resource could do
 so in such a way as to cause unexpected results
-- Retrive / modify / store.
+- Retrieve / modify / store.
 
 Move semantic - Rvalue reference
 
 POINTER VS REFERENCE C++:
-1. A pointer variable has it's own identity : memory address that can be taken with & operator (ampersand), and certain amout of space can be measured via sizeof
-   Reference is jsut an alias for an object. Using these operators on reference returns the value corresponding to whatever reference is bound to.
+1. A pointer variable has it's own identity : memory address that can be taken with & operator (ampersand), and certain amount of space can be measured via sizeof
+   Reference is just an alias for an object. Using these operators on reference returns the value corresponding to whatever reference is bound to.
 2. A pointer can be re-assigned. (A pointer can be assigned to NULL, but reference must bound to existing object.)
-   A reference cannot be re-bound, and must be bounded during initialization.
+   A reference cannot be re-bound, and must be bounded during initialisation.
 3. We can have pointer to pointer, but reference only has 1 level.
 4. A pointer can iterate over a array. using Increment (++) operator to go to net item.
-5. Pointer need to dereference using Asterisk (*) to access to memmory location it pointing to.
+5. Pointer need to dereference using Asterisk (*) to access to memory location it pointing to.
 6. Reference cannot be put in array.
-8. Const reference can bound to a contant number. [const int &a = (int)12]
+8. Const reference can bound to a constant number. [const int &a = (int)12]
 
 When Reference should be passed to function as argument ?
 1. [Modification] Expect input argument can be changed. Passing by value copies the data so if the target code modifies that copy, it will not affect the original
-2. [Performance] Passing a huge object as argument can impact performent because of copy operation
+2. [Performance] Passing a huge object as argument can impact performance because of copy operation
 3. In copy or move constructor which by definition must take reference in C++
+
+

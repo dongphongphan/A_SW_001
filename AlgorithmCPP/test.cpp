@@ -28,12 +28,12 @@ public:
 		std::cout<<"Derived Destructor\n";
 	}
 	void foo(){
-		
+		std::cout<<"Derived foo\n";
 	}
 };
-
+  
 int main(int argc, char** argv) {
-	
+	std::cout<<" main()\n";
 	Base*ptr = new Derived();
 	ptr->foo();
 	delete ptr;

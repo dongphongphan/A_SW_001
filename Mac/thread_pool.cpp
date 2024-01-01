@@ -22,11 +22,13 @@ typedef struct task
     void (*FuncP) (int i);
     int in;
 }Task;
-
+std::mutex printMtx;
 void sampleTask(int i)
 {
-    std::cout<<"Exe Tsk "<< i << std::endl;
     sleep(1);
+    std::unique_lock<std::mutex> lck(printMtx);
+    std::cout<<"Exe Tsk "<< i << std::endl;
+    lck.unlock();
 }
 class myThread
 {
@@ -56,9 +58,9 @@ class myThread
             }
             else
             {
-                std::cout<<"wait T"<< idx << std::endl;
+                //std::cout<<"wait T"<< idx << std::endl;
                 taskQueueCV.wait(lck);
-                std::cout<<"wkup T"<< idx << std::endl;
+                //std::cout<<"wkup T"<< idx << std::endl;
             }
         }
     }
@@ -68,17 +70,18 @@ public:
     {
     }
     ~myThread(){}
-    bool insertTask(Task& in)
+    int getTaskCount(){ return taskCount;}
+    bool insertTask(Task in)
     {
         std::unique_lock<std::mutex> lck(taskQueueMtx);
-        if(taskCount > TASK_POOL) {
+        std::cout<<"insertTsk:"<< in.in << " cnt:"<< taskCount<< "\n";
+        if(taskCount >= TASK_POOL) {
             std::cout<<"insertTask err Task queue full\n";
             return false;
         }
         taskList[taskCount].FuncP = in.FuncP;
         taskList[taskCount].in = in.in;
         taskCount++;
-        std::cout<<"insertTsk:"<< in.in << " cnt:"<< taskCount<< "\n";
         lck.unlock();
         taskQueueCV.notify_all();
         return true;
@@ -116,13 +119,15 @@ int main(void)
 {
     myThread t(NUM_THREAD);
     t.start();
-    std::cout<<"===Main sleep 2s\n";
-    sleep(2);
-    testInsertTask(t,TASK_POOL);
-    std::cout<<"===Main sleep 2s\n";
-    sleep(2);
-    testInsertTask(t,9);
-    t.jointT();
+    int i  = 0;
+    while(1)
+    {
+        i = rand() % 10; 
+        std::cout <<"Main insert: "<< i <<std::endl;
+        if(i > 0) testInsertTask(t,i);
+        sleep(5);
+    }
+    //t.jointT();
     return 1;
 }
 /*
